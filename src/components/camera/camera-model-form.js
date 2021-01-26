@@ -2,6 +2,7 @@ import React from "react";
 import { useForm, Controller } from "react-hook-form";
 import Select from "react-select";
 import { Form, Button, Card } from "react-bootstrap";
+import Error from '../error';
 const CameraModelForm = () => {
   const methods = useForm();
   const { handleSubmit, control, register, errors } = methods;
@@ -23,7 +24,7 @@ const CameraModelForm = () => {
                 required: true,
               })}
             />
-            <p>{errors.cameraName && <span>required</span>}</p>
+            <p>{errors.cameraName && <Error text="Name is required" />}</p>
           </Form.Group>
           <Form.Group controlId="sensor">
             <Form.Label>Sensor</Form.Label>
@@ -51,7 +52,7 @@ const CameraModelForm = () => {
               control={control}
               defaultValue={null}
             />
-            <p>{errors.select && <span>required</span>}</p>
+            <p>{errors.select && <Error text="Sensor is required" />}</p>
           </Form.Group>
 
           <Button variant="primary" type="submit">
